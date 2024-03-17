@@ -8,13 +8,18 @@ int main() {
     int linenum=1;
     fprintf(outputFile,"0%d ",linenum);
     linenum++;
+
     while ((ch = fgetc(inputFile)) != EOF) {
         if(ch!='\n'){
             fputc(ch, outputFile);
+            
         }
-        else{
-            if(linenum<10)fprintf(outputFile,"0%d ",linenum);
-            else fprintf(outputFile,"%d ",linenum);
+        else {
+            fprintf(outputFile,"\n");
+            if(linenum<10)
+                fprintf(outputFile,"0%d ",linenum);
+            else 
+            fprintf(outputFile,"%d ",linenum);
             linenum++;
         }
     }
