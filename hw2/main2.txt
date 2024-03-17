@@ -1,1 +1,29 @@
-
+01 #include <stdio.h>
+02 
+03 int main() {
+04     FILE *inputFile, *outputFile;
+05     char ch;
+06     inputFile = fopen("test.c", "r");
+07     outputFile = fopen("main2.txt", "w");
+08     int linenum=1;
+09     fprintf(outputFile,"0%d ",linenum);
+10     linenum++;
+11 
+12     while ((ch = fgetc(inputFile)) != EOF) {
+13         if(ch!='\n'){
+14             fputc(ch, outputFile);
+15             
+16         }
+17         else {
+18             fprintf(outputFile,"\n");
+19             if(linenum<10)
+20                 fprintf(outputFile,"0%d ",linenum);
+21             else 
+22             fprintf(outputFile,"%d ",linenum);
+23             linenum++;
+24         }
+25     }
+26     fclose(inputFile);
+27     fclose(outputFile);
+28     return 0;
+29 }
