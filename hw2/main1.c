@@ -57,15 +57,20 @@ int main()
      
     fprintf(fp,"======== lotto649 ========\n");
     fprintf(fp,"=%s=\n",timed);         
-    for(int j=0;j<5;j++){
+    for(int j=0;j<num;j++){
         fprintf(fp,"[%d]: ",j+1);
         for(int i=0;i<7;i++){
-            if(lotto[j][i]>69 || lotto[j][i]==0)
-                fprintf(fp,"-- ");
-            else if (lotto[j][i]<10 )
+            if (lotto[j][i]<10 )
                 fprintf(fp,"0%d ",lotto[j][i]);
             else
                 fprintf(fp,"%d ",lotto[j][i]);
+        }
+        fprintf(fp,"\n");
+    }
+    for(int j=num;j<5;j++){
+        fprintf(fp,"[%d]: ",j+1);
+        for(int i=0;i<7;i++){
+                fprintf(fp,"-- ",lotto[j][i]);
         }
         fprintf(fp,"\n");
     }
