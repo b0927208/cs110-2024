@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 void init_file(){
     int write_array[1]={0};
     FILE* fpbin=fopen("counter.bin","r");
