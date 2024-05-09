@@ -1,9 +1,29 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
+class Fueltank{
+    private:
+        int m_FueltankCapacity;
+        int m_Gas_grade;
+    public:
+        Fueltank(int FueltankCapacity=3000,int Gas=98){
+            m_FueltankCapacity=FueltankCapacity;
+            m_Gas_grade=Gas;
+        }
+        int set_Gas_grade(int Gas_grade){
+            m_Gas_grade=Gas_grade;
+            return m_Gas_grade;
+        }
+        int get_Gas_grade(){
+            return m_Gas_grade;
+        }
+        int get_F(){
+            return m_FueltankCapacity;
+        }
+};
 class Car {
     protected:
+    Fueltank m_Fueltank;
     string m_DriveMode;
     private:
     int m_MaxSeating;
@@ -32,6 +52,18 @@ class Car {
     }
     string get_DriveMode(){
         return m_DriveMode;
+    }
+    int get_Gas_grade(){
+        return m_Fueltank.get_Gas_grade();
+    }
+    int set_Gas_grade(int gas){
+        return m_Fueltank.set_Gas_grade(gas);
+    }
+    void fuel_up(int v,int gas){
+        if(v<=m_Fueltank.get_F()&&gas==m_Fueltank.get_Gas_grade())cout<<"fuel_up: "<<v<<" Gas_grade: "<<gas<<endl;
+        else if(v>m_Fueltank.get_F())cout<<"Erroe: FueltankCapacity: "<<m_Fueltank.get_F()<<"but fuel up: "<<v<<endl;
+        else if(gas!=m_Fueltank.get_Gas_grade())cout<<"Error: Gas_grade: "<<m_Fueltank.get_Gas_grade()<<" Correct Gas_grade: "<<gas<<endl;
+        
     }
     
 };
@@ -76,5 +108,7 @@ int main(){
     cout<<car_2.m_brand<<" : Max Seating = "<<car_2.get_DriveMode()<<endl;
     BENZ_Car car_3("C-class",2022,5);
     cout<<car_3.m_brand<<" : Max Seating = "<<car_3.get_DriveMode()<<endl;
+    car_2.set_Gas_grade(95);
+    car_2.fuel_up(100,98);
 
 }
