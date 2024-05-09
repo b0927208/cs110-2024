@@ -61,8 +61,8 @@ class Car {
     }
     void fuel_up(int v,int gas){
         if(v<=m_Fueltank.get_F()&&gas==m_Fueltank.get_Gas_grade())cout<<"fuel_up: "<<v<<" Gas_grade: "<<gas<<endl;
-        else if(v>m_Fueltank.get_F())cout<<"Erroe: FueltankCapacity: "<<m_Fueltank.get_F()<<"but fuel up: "<<v<<endl;
-        else if(gas!=m_Fueltank.get_Gas_grade())cout<<"Error: Gas_grade: "<<m_Fueltank.get_Gas_grade()<<" Correct Gas_grade: "<<gas<<endl;
+        if(v>m_Fueltank.get_F())cout<<"Erroe: FueltankCapacity: "<<m_Fueltank.get_F()<<"but fuel up: "<<v<<endl;
+        if(gas!=m_Fueltank.get_Gas_grade())cout<<"Error: Gas_grade: "<<m_Fueltank.get_Gas_grade()<<" Correct Gas_grade: "<<gas<<endl;
         
     }
     
@@ -109,6 +109,6 @@ int main(){
     BENZ_Car car_3("C-class",2022,5);
     cout<<car_3.m_brand<<" : Max Seating = "<<car_3.get_DriveMode()<<endl;
     car_2.set_Gas_grade(95);
-    car_2.fuel_up(100,98);
+    car_2.fuel_up(10000,98);
 
 }
